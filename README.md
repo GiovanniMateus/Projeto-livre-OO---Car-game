@@ -9,3 +9,4 @@ O jogo irá iniciar
 
 #Para jogar
 Utilize os botões seta direira e seta esquerda para mover o carro para a direita e para esquerda, respectivamente
+Faça o dowload dos arquivos png na pasta dowloads
