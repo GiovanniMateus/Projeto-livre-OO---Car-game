@@ -1,6 +1,5 @@
 import pygame
 import sys
-from tela_jogo import Tela
 class Inicializacao:
     def __init__(self, tela):
         self.tela = tela  # A tela principal será usada aqui

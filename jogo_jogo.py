@@ -1,6 +1,7 @@
 import pygame
 import random
 from outros_obj import Objeto1, Objeto2
+from points import Point
 
 class Jogo:
     def __init__(self, tela):
@@ -12,6 +13,7 @@ class Jogo:
         self.obstaculos = pygame.sprite.Group()
         self.posicao_obstaculo = None
         self.tempo_obstaculo = 0
+        self.pontuacao = Point()
         
         self.limite_esq = 200
         self.limite_dir = 400
@@ -61,8 +63,8 @@ class Jogo:
             espacamento_minimo = 150
             
             for obstaculo in self.obstaculos:
-                if obstaculo.rect.top < espacamento_minimo:  # Obstáculo muito próximo no topo
-                    return  # Cancelar criação deste obstáculo
+                if obstaculo.rect.top < espacamento_minimo:  
+                    return  
                 
             if self.posicao_obstaculo in posicoes_pos:
                 posicoes_pos.remove(self.posicao_obstaculo)
@@ -76,10 +78,10 @@ class Jogo:
             else:
                 obstaculo = Objeto2(x_pos, -50)
         
-        # Adicionar o obstáculo aos grupos
+        # Adicionar o obstáculo 
             self.obstaculos.add(obstaculo)
             self.sprites.add(obstaculo)
-            self.tempo_obstaculo = pygame.time.get_ticks()  # Atualizar o tempo da criação
+            self.tempo_obstaculo = pygame.time.get_ticks()  
 
     def verificar_colisao(self):
        for obstaculo in self.obstaculos:
@@ -110,6 +112,7 @@ class Jogo:
             self.tela.cor_tela()
             self.pista(2)
             self.criar_obstaculo()
+            self.pontuacao.atualização_pontuacao()
 
             for obstaculo in self.obstaculos:
                 obstaculo.mover(2)
@@ -120,4 +123,5 @@ class Jogo:
 
             self.verificar_colisao()
             self.sprites.draw(self.tela.screen)
+            self.pontuacao.exibir_score(self.tela.screen)
             self.tela.atualizar()

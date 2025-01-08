@@ -19,10 +19,10 @@ class Objeto_base(pygame.sprite.Sprite):
 
 class Objeto1(Objeto_base):
     def __init__(self,x,y):
-        super().__init__(r'C:\Users\User\Downloads\cone.png',x,y)
+        super().__init__(r'./Downloads/cone.png',x,y)
                 
 class Objeto2(Objeto_base):
     def __init__(self,x,y):
-        super().__init__(r'C:\Users\User\Downloads\buraco.png',x,y)
+        super().__init__(r'./Downloads/buraco.png',x,y)
         
         

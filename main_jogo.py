@@ -13,7 +13,7 @@ tela = Tela(600, 600, (100, 255, 100))
 inicializacao = Inicializacao(tela)
 inicializacao.aguardar_acao(tela)  # Aguarda o jogador pressionar ENTER para começar
 
-carro = Carro(r'C:\Users\User\Downloads\vrum.png', 300, 500)
+carro = Carro(r'./Downloads/vrum.png', 300, 500)
 
 # Inicia o jogo
 jogo = Jogo(tela)

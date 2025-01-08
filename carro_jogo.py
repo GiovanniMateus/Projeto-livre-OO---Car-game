@@ -1,14 +1,11 @@
 import pygame
-import sys
-from tela_jogo import Tela
 
-
-class Carro(pygame.sprite.Sprite):  # Herda de Sprite
+class Carro(pygame.sprite.Sprite): 
     def __init__(self, img, x, y):
         super().__init__()  # Inicializa o Sprite
         
         # Carregar imagem e redimensionar
-        img= pygame.image.load(r'C:\Users\User\Downloads\vrum.png')
+        img= pygame.image.load(r'./Downloads/vrum.png')
         escala = 120 / img.get_rect().height
         largura = int(img.get_rect().width * escala)
         altura = int(img.get_rect().height * escala)
@@ -28,5 +25,3 @@ class Carro(pygame.sprite.Sprite):  # Herda de Sprite
         
         self.hitbox.centery = self.rect.centery
         self.hitbox.centerx = self.rect.centerx
-        
-         
