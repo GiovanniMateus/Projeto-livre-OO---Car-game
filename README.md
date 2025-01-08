@@ -1,4 +1,4 @@
-# Projeto-livre-OO---Car-game
+# Projeto-livre-OO---Car-game-- Giovanni Mateus de Mendonca Leles (231027097)
 Jogo de carro com pygame seguindo os paradigmas da programação orientada a objetos
 
 #Para executar
