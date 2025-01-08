@@ -10,6 +10,6 @@ O jogo irá iniciar
 #Para jogar
 Utilize os botões seta direira e seta esquerda para mover o carro para a direita e para esquerda, respectivamente
 
-Faça o dowload dos arquivos png na pasta dowloads
+Faça o dowload dos arquivos png na pasta Downloads
 
 Tenha o pygame instalado: $pip install pygame (digite esse comando no terminal)
