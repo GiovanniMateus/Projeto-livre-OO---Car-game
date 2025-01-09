@@ -10,6 +10,8 @@ Caso queira sair da tela de score aperte ENTER
 
 Ao iniciar o jogo, irá abir uma tela para colocar seu nome ou apelido (no máximo 10 caracteres. Use apenas letras - pode dar Backspace se errar alguma letra), ele será usado para identificar os 10 scores mais altos. Quando terminar de escrever aperte ENTER
 
+O score está com um bug que não consegui consertar
+
 #Para jogar
 Utilize os botões seta direira e seta esquerda para mover o carro para a direita e para esquerda, respectivamente
 
