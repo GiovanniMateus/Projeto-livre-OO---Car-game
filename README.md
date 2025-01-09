@@ -19,3 +19,5 @@ Tenha o pygame instalado: $pip install pygame (digite esse comando no terminal)
 
 #Importante 
 A UML está na pasta Downloads
+
+Obs: Coloquei o arquivo .JSON caso precise
