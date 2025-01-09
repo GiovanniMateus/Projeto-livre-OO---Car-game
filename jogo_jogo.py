@@ -2,10 +2,13 @@ import pygame
 import random
 from outros_obj import Objeto1, Objeto2
 from points import Point
+from gerenciador_pontuacoes import GerenciadorPontuacoes
+
 
 class Jogo:
     def __init__(self, tela):
         self.tela = tela
+        self.gerenciador_pontuacoes = GerenciadorPontuacoes()
         self.running = True
         self.carro = None
         self.pontilhado_a = 0
@@ -19,12 +22,6 @@ class Jogo:
         self.limite_dir = 400
         
         self.min_distancia = 150
-
-    def game_settings(self):
-        game_over = False
-        speed = 2
-        score = 0
-        return speed, score, game_over
 
     def pista(self, speed):
         # Dimensões da pista
@@ -78,50 +75,60 @@ class Jogo:
             else:
                 obstaculo = Objeto2(x_pos, -50)
         
-        # Adicionar o obstáculo 
+        # Adicionar o obstáculo aos grupos
             self.obstaculos.add(obstaculo)
             self.sprites.add(obstaculo)
             self.tempo_obstaculo = pygame.time.get_ticks()  
 
     def verificar_colisao(self):
-       for obstaculo in self.obstaculos:
+        for obstaculo in self.obstaculos:
            if self.carro.hitbox.colliderect(obstaculo.hitbox):
             print("Você perdeu.")
             self.running = False
+            return True
+        return False
+            
 
     def executar(self, clock, fps, carro):
         self.carro = carro
         self.sprites.add(self.carro)
-    
-        while self.running:   
-            for event in pygame.event.get():   
-                if event.type == pygame.QUIT:
-                    self.running = False 
-                elif event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_RIGHT:
-                        self.carro.mover("direita", self.limite_esq, self.limite_dir)
-                    if event.key == pygame.K_LEFT:
-                        self.carro.mover("esquerda", self.limite_esq, self.limite_dir)
+        self.mostrando_scores = False
 
-            clock.tick(fps)
-
+        while self.running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.running = False
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_s:
+                        self.mostrando_scores = True
+                    elif event.key == pygame.K_RETURN and self.mostrando_scores:
+                        self.mostrando_scores = False
+                    elif event.key == pygame.K_RIGHT:
+                        self.carro.mover("direita", 200, 400)
+                    elif event.key == pygame.K_LEFT:
+                        self.carro.mover("esquerda", 200, 400)
 
+            clock.tick(fps)
             self.tela.cor_tela()
-            self.pista(2)
-            self.criar_obstaculo()
-            self.pontuacao.atualização_pontuacao()
+            
+            if self.mostrando_scores:
+                self.mostrar_scores()
+            else:
+                self.tela.cor_tela()
+                self.pista(2)
+                self.criar_obstaculo()
+                self.pontuacao.atualização_pontuacao()
 
-            for obstaculo in self.obstaculos:
-                obstaculo.mover(2)
+                for obstaculo in self.obstaculos:
+                    obstaculo.mover(2)
 
                 # Remove obstáculos que saem da tela
-                if obstaculo.rect.top > self.tela.altura:
-                    obstaculo.kill()
-
-            self.verificar_colisao()
-            self.sprites.draw(self.tela.screen)
-            self.pontuacao.exibir_score(self.tela.screen)
-            self.tela.atualizar()
+                    if obstaculo.rect.top > self.tela.altura:
+                        obstaculo.kill()
+                
+                if self.verificar_colisao():
+                    break
+                
+                self.sprites.draw(self.tela.screen)
+                self.pontuacao.exibir_score(self.tela.screen)
+            self.tela.atualizar() 
