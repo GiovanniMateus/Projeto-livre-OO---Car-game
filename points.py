@@ -6,10 +6,10 @@ class Point:
         self.fonte = pygame.font.Font(None, fonte)
         self.cor = cor
         
-    def atualização_pontuacao(self):
-        self.score +=1
+    def atualização_pontuacao(self,valor=1):
+        self.score += valor
         
     def exibir_score(self, tela):
-        texto = f'Score:{self.score}'
+        texto = f'Score:{int(self.score)}'
         superficie_texto = self.fonte.render(texto, True, self.cor)
         tela.blit(superficie_texto,(10,10))
