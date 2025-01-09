@@ -54,8 +54,9 @@ class Inicializacao:
                 texto = f"{score['nome']}: {score['pontuacao']}"
                 superficie_texto = font.render(texto, True, (255, 255, 255))
                 self.tela.screen.blit(superficie_texto, (50, y))
+                y += 40
             self.tela.atualizar()
-            pygame.time.wait(2000)
+            pygame.time.wait(20000)
             
     def entrada_nome(self):
         nome = ''
