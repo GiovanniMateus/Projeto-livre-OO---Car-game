@@ -56,7 +56,7 @@ class Inicializacao:
                 self.tela.screen.blit(superficie_texto, (50, y))
                 y += 40
             self.tela.atualizar()
-            pygame.time.wait(20000)
+            pygame.time.wait(2000)
             
     def entrada_nome(self):
         nome = ''
